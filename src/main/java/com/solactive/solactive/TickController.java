@@ -15,11 +15,15 @@ public class TickController {
     @RequestMapping(value = "/ticks", method = RequestMethod.POST)
     public void Post(@RequestBody TickRequest request, HttpServletResponse response) {
         long now = System.currentTimeMillis();
-        if (now - request.timestamp < 600000) {
+        if (now - request.timestamp > 600000 
+        		|| request.price < 0 
+        		|| request.instrument == null) {
+        	
             tickRepository.Add(new Tick(request.instrument, request.price, request.timestamp));
-            response.setStatus(HttpServletResponse.SC_ACCEPTED);
-        } else {
             response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            
+        } else {
+            response.setStatus(HttpServletResponse.SC_ACCEPTED);
         }
     }
 

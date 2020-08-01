@@ -3,6 +3,9 @@ package com.solactive.solactive;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Set;
+
 
 public class Statistic {
     private final List<Tick> ticks;
@@ -43,15 +46,29 @@ public class Statistic {
     }
 
     private double CalculateQuantite() {
-        return 0;
+    	double quantile = (CalculateMax()-CalculateMin())/20 + CalculateMin();   	
+        return quantile;
     }
 
     private double CalculateVolatility() {
+    	Set<String> tickInstruments = ticks.stream().map(t -> t.GetInstrument()).collect(Collectors.toSet());
+    	
         return 0;
     }
 
     private double CalculateMaxDrawdown() {
-        return 0;
+        Set<String> tickInstruments = ticks.stream().map(t -> t.GetInstrument()).collect(Collectors.toSet());
+        double maxDrawDown = 0;
+        
+        for(String s:tickInstruments) {
+        	List<Double> prices= ticks.stream().filter(t -> t.GetInstrument() == s).map(t -> t.GetPrice())
+        			.collect(Collectors.toList()); 
+        	double minPrice = Collections.min(prices);
+        	double maxPrice = Collections.max(prices);
+        	if(maxPrice-minPrice > maxDrawDown) maxDrawDown = maxPrice-minPrice;
+        }
+        
+    	return maxDrawDown;
     }
 
     private double CalculateMin() {
