@@ -3,24 +3,20 @@ package com.solactive.solactive;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.Set;
-
 
 public class Statistic {
-    private final List<Tick> ticks;
-
-    public Statistic(List<Tick> ticks) {
-        this.ticks = ticks;
-        count = CalculateCount();
-        avg = CalculateAvg();
-        max = CalculateMax();
-        min = CalculateMin();
-        maxDrawdown = CalculateMaxDrawdown();
-        volatility = CalculateVolatility();
-        quantile = CalculateQuantite();
-        twap = CalculateTwap();
-        twap2 = CalculateTwap2();
+    public static Statistic CalculateStatistic(List<Tick> ticks) {
+        Statistic statistic = new Statistic();
+        statistic.count = CalculateCount(ticks);
+        statistic.avg = CalculateAvg(ticks);
+        statistic.max = CalculateMax(ticks);
+        statistic.min = CalculateMin(ticks);
+        statistic.maxDrawdown = CalculateMaxDrawdown(ticks);
+        statistic.volatility = CalculateVolatility(ticks);
+        statistic.quantile = CalculateQuantite(ticks);
+        statistic.twap = CalculateTwap(ticks);
+        statistic.twap2 = CalculateTwap2(ticks);
+        return statistic;
     }
 
     public double avg;
@@ -33,61 +29,48 @@ public class Statistic {
     public double twap2;
     public long count;
 
-    private long CalculateCount() {
+    private static long CalculateCount(List<Tick> ticks) {
         return ticks.size();
     }
 
-    private double CalculateTwap2() {
+    private static double CalculateTwap2(List<Tick> ticks) {
         return 0;
     }
 
-    private double CalculateTwap() {
+    private static double CalculateTwap(List<Tick> ticks) {
         return 0;
     }
 
-    private double CalculateQuantite() {
-    	double quantile = (CalculateMax()-CalculateMin())/20 + CalculateMin();   	
-        return quantile;
-    }
-
-    private double CalculateVolatility() {
-    	Set<String> tickInstruments = ticks.stream().map(t -> t.GetInstrument()).collect(Collectors.toSet());
-    	
+    private static double CalculateQuantite(List<Tick> ticks) {
         return 0;
     }
 
-    private double CalculateMaxDrawdown() {
-        Set<String> tickInstruments = ticks.stream().map(t -> t.GetInstrument()).collect(Collectors.toSet());
-        double maxDrawDown = 0;
-        
-        for(String s:tickInstruments) {
-        	List<Double> prices= ticks.stream().filter(t -> t.GetInstrument() == s).map(t -> t.GetPrice())
-        			.collect(Collectors.toList()); 
-        	double minPrice = Collections.min(prices);
-        	double maxPrice = Collections.max(prices);
-        	if(maxPrice-minPrice > maxDrawDown) maxDrawDown = maxPrice-minPrice;
-        }
-        
-    	return maxDrawDown;
+    private static double CalculateVolatility(List<Tick> ticks) {
+        return 0;
     }
 
-    private double CalculateMin() {
-        return Collections.min(ticks, getTickComparingByPrice()).GetPrice();
+    private static double CalculateMaxDrawdown(List<Tick> ticks) {
+        return 0;
     }
 
-    private double CalculateMax() {
-        return Collections.max(ticks, getTickComparingByPrice()).GetPrice();
+    private static double CalculateMin(List<Tick> ticks) {
+        return CalculateCount(ticks) == 0 ? 0 : Collections.min(ticks, getTickComparingByPrice()).GetPrice();
     }
 
-    private Comparator<Tick> getTickComparingByPrice() {
+    private static double CalculateMax(List<Tick> ticks) {
+        return CalculateCount(ticks) == 0 ? 0 : Collections.max(ticks, getTickComparingByPrice()).GetPrice();
+    }
+
+    private static Comparator<Tick> getTickComparingByPrice() {
         return Comparator.comparing(Tick::GetPrice);
     }
 
-    private double CalculateAvg() {
-        return CalculateSum() / CalculateCount();
+    private static double CalculateAvg(List<Tick> ticks) {
+        var count = CalculateCount(ticks);
+        return count == 0 ? 0 : CalculateSum(ticks) / count;
     }
 
-    private double CalculateSum() {
+    private static double CalculateSum(List<Tick> ticks) {
         return ticks.stream().mapToDouble(Tick::GetPrice).sum();
     }
 }

@@ -1,9 +1,11 @@
 package com.solactive.solactive;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Component
@@ -15,16 +17,18 @@ public class TickRepositoryImp implements TickRepository {
         Ticks.add(tick);
     }
 
+    @Async
     @Override
-    public Statistic GetLastSixtySecondStatistics() {
+    public CompletableFuture<Statistic> GetLastSixtySecondStatistics() {
         List<Tick> ticksList = GetLastSixtySecondTicks();
-        return new Statistic(ticksList);
+        return CompletableFuture.completedFuture(Statistic.CalculateStatistic(ticksList));
     }
 
+    @Async
     @Override
-    public Statistic GetLastSixtySecondStatisticsByInstrument(String instrument) {
+    public CompletableFuture<Statistic> GetLastSixtySecondStatisticsByInstrument(String instrument) {
         List<Tick> ticksList = GetLastSixtySecondTicksByInstrument(instrument);
-        return new Statistic(ticksList);
+        return CompletableFuture.completedFuture(Statistic.CalculateStatistic(ticksList));
     }
 
     private List<Tick> GetLastSixtySecondTicksByInstrument(String instrument) {

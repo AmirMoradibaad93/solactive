@@ -1,9 +1,11 @@
 package com.solactive.solactive;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface TickRepository {
     void Add(Tick tick);
 
-    Statistic GetLastSixtySecondStatistics();
+    CompletableFuture<Statistic> GetLastSixtySecondStatistics();
 
-    Statistic GetLastSixtySecondStatisticsByInstrument(String instrument);
+    CompletableFuture<Statistic> GetLastSixtySecondStatisticsByInstrument(String instrument);
 }

@@ -1,7 +1,7 @@
 package com.solactive.solactive;
 
 public class Tick {
-    public Tick(String instrument, Double price, long timestamp) {
+    public Tick(String instrument, double price, long timestamp) {
         this.instrument = instrument;
         this.price = price;
         this.timestamp = timestamp;
