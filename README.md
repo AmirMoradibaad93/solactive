@@ -2,15 +2,15 @@
 Curl Commands:
 Please use the following curl commands to test “POST /ticks”,”GET /statistics” and “GET /statistics/{instrument_identifier}” functionalities:
 
-# Get one statistics by instrument_identifier
+-Get one statistics by instrument_identifier
 curl -i -H "Content-Type: application/json" \
     -X GET localhost:8080/statistics/2
 
-# List all statistics
+-List all statistics
 curl -i -H "Content-Type: application/json" \
     -X GET localhost:8080/statistics
 
-# Add new tick
+-Add new tick
 curl -i -H "Content-Type: application/json" -X POST -d '{
         "instrument": "UNICRE",
         "price": "16.6",
@@ -19,7 +19,7 @@ curl -i -H "Content-Type: application/json" -X POST -d '{
 
 
 
-Assumptions:
+#Assumptions:
 
 To briefly introduce the project, it’s a rest API application built in Spring Boot. For the parallelism part, being done by multithreading concept. At the end test unit part take cares of the functionality valuation part. It can be used in JAVA 11 or higher. There is also possibility to reduce it to lower versions of JAVA.
  
@@ -30,10 +30,10 @@ To briefly introduce the project, it’s a rest API application built in Spring 
 4.	In volatility, twap and twap2 calculation as no specific formula being provided, I tried to reach a reasonable formula.
 
 
-Improvements:
+#Improvements:
 
 In my opinion, if I had a chance and time, I could try to use gRPC and compare it with REST in terms of performance and development structure.  
 
 
-Did I like the project:
+#Did I like the project:
 Yes. There was some challenging points that made me thinking and got excited solving them.
