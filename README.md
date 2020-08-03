@@ -2,20 +2,17 @@
 # Curl Commands:
 Please use the following curl commands to test “POST /ticks”,”GET /statistics” and “GET /statistics/{instrument_identifier}” functionalities:
 
--Get one statistics by instrument_identifier
-curl -i -H "Content-Type: application/json" \
-    -X GET localhost:8080/statistics/2
+-Get one statistics by instrument_identifier:
 
--List all statistics
-curl -i -H "Content-Type: application/json" \
-    -X GET localhost:8080/statistics
+curl -i -H "Content-Type: application/json" -X GET localhost:8080/statistics/2
 
--Add new tick
-curl -i -H "Content-Type: application/json" -X POST -d '{
-        "instrument": "UNICRE",
-        "price": "16.6",
-"timestamp": "600"
-    }' localhost:8080/ticks
+-List all statistics:
+
+curl -i -H "Content-Type: application/json" -X GET localhost:8080/statistics
+
+-Add new tick:
+
+curl -i -H "Content-Type: application/json" -X POST -d '{"instrument": "UNICRE","price": "16.6","timestamp": "600"}' localhost:8080/ticks
 
 
 
