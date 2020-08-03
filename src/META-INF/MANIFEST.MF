@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Implementation-Title: solactive
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Iason
+Implementation-Vendor-Id: com.solactive
+Class-Path: lib/spring-boot-starter-data-rest-2.3.2.RELEASE.jar lib/sp
+ ring-data-rest-webmvc-3.3.2.RELEASE.jar lib/spring-data-rest-core-3.3
+ .2.RELEASE.jar lib/spring-tx-5.2.8.RELEASE.jar lib/spring-hateoas-1.1
+ .0.RELEASE.jar lib/spring-data-commons-2.3.2.RELEASE.jar lib/spring-p
+ lugin-core-2.0.0.RELEASE.jar lib/evo-inflector-1.2.2.jar lib/jackson-
+ databind-2.11.1.jar lib/jackson-core-2.11.1.jar lib/jackson-annotatio
+ ns-2.11.1.jar lib/spring-boot-starter-web-2.3.2.RELEASE.jar lib/sprin
+ g-boot-starter-2.3.2.RELEASE.jar lib/spring-boot-2.3.2.RELEASE.jar li
+ b/spring-boot-autoconfigure-2.3.2.RELEASE.jar lib/spring-boot-starter
+ -logging-2.3.2.RELEASE.jar lib/logback-classic-1.2.3.jar lib/logback-
+ core-1.2.3.jar lib/log4j-to-slf4j-2.13.3.jar lib/log4j-api-2.13.3.jar
+  lib/jul-to-slf4j-1.7.30.jar lib/jakarta.annotation-api-1.3.5.jar lib
+ /snakeyaml-1.26.jar lib/spring-boot-starter-json-2.3.2.RELEASE.jar li
+ b/jackson-datatype-jdk8-2.11.1.jar lib/jackson-datatype-jsr310-2.11.1
+ .jar lib/jackson-module-parameter-names-2.11.1.jar lib/spring-boot-st
+ arter-tomcat-2.3.2.RELEASE.jar lib/tomcat-embed-core-9.0.37.jar lib/j
+ akarta.el-3.0.3.jar lib/tomcat-embed-websocket-9.0.37.jar lib/spring-
+ web-5.2.8.RELEASE.jar lib/spring-beans-5.2.8.RELEASE.jar lib/spring-w
+ ebmvc-5.2.8.RELEASE.jar lib/spring-aop-5.2.8.RELEASE.jar lib/spring-c
+ ontext-5.2.8.RELEASE.jar lib/spring-expression-5.2.8.RELEASE.jar lib/
+ spring-data-rest-hal-browser-3.3.2.RELEASE.jar lib/slf4j-api-1.7.30.j
+ ar lib/h2-1.4.193.jar lib/json-path-2.4.0.jar lib/json-smart-2.3.jar 
+ lib/accessors-smart-1.2.jar lib/asm-5.0.4.jar lib/spring-core-5.2.8.R
+ ELEASE.jar lib/spring-jcl-5.2.8.RELEASE.jar
+Build-Jdk: 1.8.0_191
+Implementation-URL: https://spring.io/projects/spring-boot/solactive
+Created-By: Maven Integration for Eclipse
+Main-Class: com.mypackage.MyClass
+
