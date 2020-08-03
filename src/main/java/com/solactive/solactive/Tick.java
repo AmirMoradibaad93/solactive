@@ -2,6 +2,9 @@ package com.solactive.solactive;
 
 public class Tick {
     public Tick(String instrument, double price, long timestamp) {
+        if(instrument == null) {
+        	instrument = " ";
+        }
         this.instrument = instrument;
         this.price = price;
         this.timestamp = timestamp;

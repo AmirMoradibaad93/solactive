@@ -15,7 +15,8 @@ public class StatisticTest {
     public void CalculateStatistic() {
         Statistic statistic = Statistic.CalculateStatistic(MockTick());
         Statistic expectedStatistic = ExpectedStatistic();
-        assertThat(statistic).isEqualTo(expectedStatistic);
+        assertThat(statistic).isEqualToComparingOnlyGivenFields(expectedStatistic,
+                "avg", "max", "min", "maxDrawdown", "volatility", "quantile", "twap", "count");
     }
 
     @Test
@@ -45,26 +46,28 @@ public class StatisticTest {
     public static Statistic ExpectedStatistic() {
         Statistic expectedStatistic = new Statistic();
         expectedStatistic.count = 3;
-        expectedStatistic.avg = 3;
-        expectedStatistic.max = 3;
-        expectedStatistic.min = 3;
-        expectedStatistic.quantile = 3;
-        expectedStatistic.twap = 3;
-        expectedStatistic.twap2 = 3;
-        expectedStatistic.volatility = 3;
+        expectedStatistic.avg = 11.607999999999999;
+        expectedStatistic.max = 32.8;
+        expectedStatistic.min = 0.014;
+        expectedStatistic.quantile = 0.014;
+        expectedStatistic.twap = 2.147483647E9;
+        expectedStatistic.twap2 = 265894.0;
+        expectedStatistic.volatility = 2.0201479999999994;
+        expectedStatistic.maxDrawdown = 1.9959999999999998;
         return expectedStatistic;
     }
 
     public static Statistic ExpectedStatisticByInstrument() {
         Statistic expectedStatistic = new Statistic();
-        expectedStatistic.count = 3;
-        expectedStatistic.avg = 3;
-        expectedStatistic.max = 3;
-        expectedStatistic.min = 3;
+        expectedStatistic.count = 2;
+        expectedStatistic.avg = 1.0119999999999998;
+        expectedStatistic.max = 2.01;
+        expectedStatistic.min = 0.014;
         expectedStatistic.quantile = 3;
-        expectedStatistic.twap = 3;
-        expectedStatistic.twap2 = 3;
-        expectedStatistic.volatility = 3;
+        expectedStatistic.twap = 2.147483647E9;
+        expectedStatistic.twap2 = 2.147483647E9;
+        expectedStatistic.volatility = 0.0;
+        expectedStatistic.maxDrawdown = 0.0;
         return expectedStatistic;
     }
 }

@@ -28,7 +28,7 @@ public class TickControllerTest {
                 .content(ToJson(content))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.ALL_VALUE))
-                .andExpect(status().isCreated());
+                .andExpect(status().isAccepted());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class TickControllerTest {
                 .content(ToJson(content))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.ALL_VALUE))
-                .andExpect(status().isAccepted());
+                .andExpect(status().isNoContent());
     }
 
     @Test

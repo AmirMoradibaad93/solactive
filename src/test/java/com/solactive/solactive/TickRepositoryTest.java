@@ -21,9 +21,9 @@ public class TickRepositoryTest {
             tickRepositoryImp.Add(tick);
         }
         when(tickRepositoryImp.GetLastSixtySecondStatistics())
-                .thenReturn(CompletableFuture.completedFuture(new Statistic()));
+                .thenReturn(CompletableFuture.completedFuture(StatisticTest.ExpectedStatistic()));
         var getLastSixtySecondStatistics = tickRepositoryImp.GetLastSixtySecondStatistics();
-        assertThat(getLastSixtySecondStatistics.get()).isEqualTo(StatisticTest.ExpectedStatistic());
+        assertThat(getLastSixtySecondStatistics.get()).isEqualToComparingFieldByField(StatisticTest.ExpectedStatistic());
     }
 
     @Test
@@ -32,8 +32,8 @@ public class TickRepositoryTest {
             tickRepositoryImp.Add(tick);
         }
         when(tickRepositoryImp.GetLastSixtySecondStatisticsByInstrument("test1"))
-                .thenReturn(CompletableFuture.completedFuture(new Statistic()));
+                .thenReturn(CompletableFuture.completedFuture(StatisticTest.ExpectedStatisticByInstrument()));
         var getLastSixtySecondStatisticsByInstrument = tickRepositoryImp.GetLastSixtySecondStatisticsByInstrument("test1");
-        assertThat(getLastSixtySecondStatisticsByInstrument.get()).isEqualTo(StatisticTest.ExpectedStatisticByInstrument());
+        assertThat(getLastSixtySecondStatisticsByInstrument.get()).isEqualToComparingFieldByField(StatisticTest.ExpectedStatisticByInstrument());
     }
 }
